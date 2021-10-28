@@ -105,11 +105,11 @@ This command does not push text to `kill-ring'."
 (setq neo-theme 'arrow)
 ;(setq neo-autorefresh t)
 
-(defun my_neotree_hook ()
-  "my"
-  (neotree-show)
-  (remove-hook 'doom-switch-buffer-hook 'my_neotree_hook))
-(add-hook 'doom-switch-buffer-hook 'my_neotree_hook)
+;; (defun my_neotree_hook ()
+;;   "my"
+;;   (neotree-show)
+;;   (remove-hook 'doom-switch-buffer-hook 'my_neotree_hook))
+;; (add-hook 'doom-switch-buffer-hook 'my_neotree_hook)
 ;(neotree-mode t)
 
 (add-to-list 'auto-mode-alist '("\\.ejs\\'" . html-mode))
@@ -146,7 +146,7 @@ This command does not push text to `kill-ring'."
 ;; (lsp-ui-sideline-mode 0)
 ;; (lsp-ui-peek-enable 1)
 
-(xterm-mouse-mode -1)
+;; (xterm-mouse-mode -1)
 ;; (require 'elcord)
 ;; (elcord-mode)
 (custom-set-variables

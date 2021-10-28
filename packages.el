@@ -12,11 +12,9 @@
 
 (package! puppet-mode)
 (package! js2-mode)
-(package! json-mode)
-(package! yaml-mode)
 
 (package! flycheck-clang-tidy)
 
 ;; (package! xterm-mouse :disable t)
 
-(package! magit-section)
+;; (package! magit-section)
