@@ -14,7 +14,6 @@
 (package! js2-mode)
 
 (package! flycheck-clang-tidy)
+(package! xref :pin "a82f459b37b31546bf274388baf8aca79e9c30d9")
 
 ;; (package! xterm-mouse :disable t)
-
-;; (package! magit-section)
