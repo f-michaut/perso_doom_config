@@ -27,6 +27,12 @@
 ;; (global-set-key [triple-wheel-up] 'ignore)
 ;; (global-set-key [triple-wheel-down] 'ignore)
 
+(global-git-gutter-mode)
+(global-display-line-numbers-mode)
+
+(require 'multiple-cursors)
+(setq mc/always-run-for-all t)
+
 (eval-after-load 'flycheck
     '(add-hook 'flycheck-mode-hook #'flycheck-clang-tidy-setup))
 
@@ -117,6 +123,7 @@ This command does not push text to `kill-ring'."
 ;; (eval-after-load 'company
 ;;   '(add-to-list 'company-backends 'company-irony))
 
+(add-to-list 'company-backends 'company-jedi)
 
 ;; Unity stuff
 (defun unity-compile-game ()
@@ -138,7 +145,11 @@ This command does not push text to `kill-ring'."
                   (error line-start (file-name) "(" line (zero-or-more not-newline) "): " (message) line-end)))
 
 (setq csharp-want-imenu nil)
-(local-set-key (kbd "{") 'csharp-insert-open-brace)
+(add-hook 'csharp-mode
+          (lambda ()
+            (local-set-key (kbd "{") 'csharp-insert-open-brace)
+            )
+          )
 
 
 ;; (require 'lsp)

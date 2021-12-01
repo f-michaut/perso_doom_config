@@ -11,7 +11,9 @@
 (package! multiple-cursors)
 
 (package! puppet-mode)
+(package! jenkinsfile-mode)
 (package! js2-mode)
+(package! company-jedi)
 
 (package! flycheck-clang-tidy)
 (package! xref :pin "a82f459b37b31546bf274388baf8aca79e9c30d9")
