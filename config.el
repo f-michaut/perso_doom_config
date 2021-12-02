@@ -4,6 +4,21 @@
 (setq doom-theme 'doom-palenight)
 (setq python-shell-interpreter "python3")
 
+;; This line is not working ?
+(let ((default-directory (expand-file-name "lisp" doom-private-dir)))
+  (normal-top-level-add-subdirs-to-load-path))
+
+(add-to-list 'load-path "~/.local/share/icons-in-terminal/")
+
+(add-to-list 'load-path "~/.doom.d/lisp")
+(add-to-list 'load-path "~/.doom.d/lisp/sidebar.el")
+
+
+(require 'sidebar)
+(global-set-key (kbd "C-x C-q") 'sidebar-open)
+(global-set-key (kbd "C-x C-a") 'sidebar-buffers-open)
+;; (remove-hook 'server-after-make-frame-hook 'sidebar-open)
+
 (map!
  ;; "C-c <C-right>" #'evil-window-right
  ;; "C-c <C-left>" #'evil-window-left
@@ -17,6 +32,8 @@
  "C-x C-g" #'magit-commit
  "C-c C-r" #'clang-rename
  "C-c C-f" #'+fold/toggle
+ "<C-M-up>" #'backward-sexp
+ "<C-M-down>" #'forward-sexp
  )
 
 ;; (mouse-wheel-mode -1)
@@ -103,6 +120,8 @@ This command does not push text to `kill-ring'."
 
 ;; (require 'evil)
 ;; (evil-mode 0)
+
+(save-selected-window (sidebar-open))
 
 ;(add-hook 'doom-restore-session-handler (lambda () (neotree-show)))
 ;(add-hook 'projectile-find-file-hook (lambda () (neotree-show)))

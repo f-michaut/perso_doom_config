@@ -1,0 +1,3 @@
+[submodule "lisp/sidebar.el"]
+	path = lisp/sidebar.el
+	url = https://github.com/sebastiencs/sidebar.el.git

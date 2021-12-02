@@ -15,6 +15,9 @@
 (package! js2-mode)
 (package! company-jedi)
 
+(package! frame-local)
+(package! ov)
+
 (package! flycheck-clang-tidy)
 (package! xref :pin "a82f459b37b31546bf274388baf8aca79e9c30d9")
 
