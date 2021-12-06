@@ -13,11 +13,16 @@
 (add-to-list 'load-path "~/.doom.d/lisp")
 (add-to-list 'load-path "~/.doom.d/lisp/sidebar.el")
 
+(require 'fold-this)
+(global-set-key (kbd "C-t") 'fold-this)
+(fold-this-persistent-mode t)
 
+(require 'icons-in-terminal)
 (require 'sidebar)
 (global-set-key (kbd "C-x C-q") 'sidebar-open)
 (global-set-key (kbd "C-x C-a") 'sidebar-buffers-open)
 ;; (remove-hook 'server-after-make-frame-hook 'sidebar-open)
+;(save-selected-window (sidebar-open))
 
 (map!
  ;; "C-c <C-right>" #'evil-window-right
@@ -121,8 +126,6 @@ This command does not push text to `kill-ring'."
 ;; (require 'evil)
 ;; (evil-mode 0)
 
-(save-selected-window (sidebar-open))
-
 ;(add-hook 'doom-restore-session-handler (lambda () (neotree-show)))
 ;(add-hook 'projectile-find-file-hook (lambda () (neotree-show)))
 ;(add-hook 'neotree-projectile-action (lambda () (neotree-show)))
@@ -187,7 +190,7 @@ This command does not push text to `kill-ring'."
  '(neo-hidden-regexp-list
    (quote
     ("^\\.\\(?:git\\|hg\\|svn\\)$" "\\.\\(?:pyc\\|o\\|elc\\|lock\\|css.map\\|class\\)$" "^\\(?:node_modules\\|vendor\\|.\\(project\\|cask\\|yardoc\\|sass-cache\\)\\)$" "^\\.\\(?:sync\\|export\\|attach\\)$" "~$" "^#.*#$" "^.*\\.meta$")))
- '(neo-show-hidden-files t)
+ '(neo-show-hidden-files nil)
  '(tab-width 4)
  '(c-basic-offset 4))
 (custom-set-faces

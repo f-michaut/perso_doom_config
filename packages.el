@@ -15,6 +15,7 @@
 (package! js2-mode)
 (package! company-jedi)
 
+(package! fold-this)
 (package! frame-local)
 (package! ov)
 
