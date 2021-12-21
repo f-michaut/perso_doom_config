@@ -14,11 +14,15 @@
 (package! jenkinsfile-mode)
 (package! js2-mode)
 (package! company-jedi)
+(package! font-lock-ext)
 
 (package! fold-this)
 (package! frame-local)
 (package! ov)
 
+;(package! srefactor) // TODO try this (but it's not maintained anymore)
+
+(package! flycheck-clang-analyzer)
 (package! flycheck-clang-tidy)
 (package! xref :pin "a82f459b37b31546bf274388baf8aca79e9c30d9")
 

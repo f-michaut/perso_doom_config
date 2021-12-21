@@ -55,9 +55,6 @@
 (require 'multiple-cursors)
 (setq mc/always-run-for-all t)
 
-(eval-after-load 'flycheck
-    '(add-hook 'flycheck-mode-hook #'flycheck-clang-tidy-setup))
-
 (remove-hook 'tty-setup-hook #'xterm-mouse-mode)
 (global-display-fill-column-indicator-mode)
 (set-fill-column 80)
@@ -142,10 +139,52 @@ This command does not push text to `kill-ring'."
 
 (add-to-list 'auto-mode-alist '("\\.ejs\\'" . html-mode))
 
-;; (eval-after-load 'company
-;;   '(add-to-list 'company-backends 'company-irony))
 
-(add-to-list 'company-backends 'company-jedi)
+(eval-after-load 'company
+  '(add-to-list 'company-backends 'company-jedi))
+(eval-after-load 'company
+  '(add-to-list 'company-backends 'company-irony))
+;; (eval-after-load 'company
+;;   '(add-to-list 'company-backends 'c/c++-clang-tidy))
+
+(require 'flycheck)
+(eval-after-load 'flycheck
+   '(add-to-list 'flycheck-checkers 'c/c++-clang-tidy))
+(eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook (lambda () (flycheck-add-next-checker 'irony '(warning . c/c++-clang-tidy)))))
+(eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook (lambda () (flycheck-add-next-checker 'c/c++-clang-tidy 'clang-analyzer))))
+(eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
+(eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook #'flycheck-clang-tidy-setup))
+(eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook #'flycheck-clang-analyzer-setup))
+
+;; (defun flycheck-irony-and-clang-tidy-setup ()
+;;    (flycheck-clang-tidy-setup)
+;;    (flycheck-irony-setup)
+;;    (flycheck-add-next-checker 'irony '(warning . c/c++-clang-tidy)))
+
+;; (with-eval-after-load 'flycheck
+;;    (add-hook 'flycheck-mode-hook #'flycheck-irony-and-clang-tidy-setup))
+
+;; (with-eval-after-load 'flycheck
+;;    (add-hook 'flycheck-mode-hook #'flycheck-irony-setup)
+;;    (add-hook 'flycheck-mode-hook #'flycheck-clang-tidy-setup)
+;;    (flycheck-add-next-checker 'irony '(warning . c/c++-clang-tidy)))
+
+(require 'flycheck-clang-analyzer)
+(flycheck-clang-analyzer-setup)
+;; (eval-after-load 'flycheck
+;;   '(flycheck-add-next-checker 'irony 'c/c++-clang-tidy)
+;; )
+
+
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'objc-mode-hook 'irony-mode)
+(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 
 ;; Unity stuff
 (defun unity-compile-game ()
@@ -180,8 +219,8 @@ This command does not push text to `kill-ring'."
 ;; (lsp-ui-peek-enable 1)
 
 ;; (xterm-mouse-mode -1)
-;; (require 'elcord)
-;; (elcord-mode)
+(require 'elcord)
+(elcord-mode)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
