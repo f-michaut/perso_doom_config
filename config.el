@@ -11,18 +11,31 @@
 (add-to-list 'load-path "~/.local/share/icons-in-terminal/")
 
 (add-to-list 'load-path "~/.doom.d/lisp")
-(add-to-list 'load-path "~/.doom.d/lisp/sidebar.el")
+(add-to-list 'load-path "~/.doom.d/lisp/std_comment.el")
 
 (require 'fold-this)
 (global-set-key (kbd "C-t") 'fold-this)
 (fold-this-persistent-mode t)
 
-(require 'icons-in-terminal)
-(require 'sidebar)
-(global-set-key (kbd "C-x C-q") 'sidebar-open)
-(global-set-key (kbd "C-x C-a") 'sidebar-buffers-open)
+;; TODO fix sidebar so it doesn't destroy graphic sessions performances
+(if (not (display-graphic-p))
+    (progn
+      (add-to-list 'load-path "~/.doom.d/lisp/sidebar.el")
+      (require 'icons-in-terminal)
+      (require 'sidebar)
+      (global-set-key (kbd "C-x C-q") 'sidebar-open)
+      (global-set-key (kbd "C-x C-a") 'sidebar-buffers-open)
+      )
+    )
+
 ;; (remove-hook 'server-after-make-frame-hook 'sidebar-open)
 ;(save-selected-window (sidebar-open))
+
+(require 'std_comment)
+(global-set-key (kbd "C-c h") 'std-file-header)
+(global-set-key (kbd "C-c u") 'update-std-header)
+
+(add-hook 'before-save-hook 'update-std-header)
 
 (map!
  ;; "C-c <C-right>" #'evil-window-right
