@@ -17,6 +17,10 @@
 (global-set-key (kbd "C-t") 'fold-this)
 (fold-this-persistent-mode t)
 
+(require 'eglot)
+(add-hook 'ruby-mode-hook 'eglot-ensure)
+(xclip-mode)
+
 ;; TODO fix sidebar so it doesn't destroy graphic sessions performances
 (if (not (display-graphic-p))
     (progn
@@ -38,6 +42,7 @@
 (add-hook 'before-save-hook 'update-std-header)
 
 (map!
+ "C-x p" #'projectile-command-map
  ;; "C-c <C-right>" #'evil-window-right
  ;; "C-c <C-left>" #'evil-window-left
  ;; "C-c <C-up>" #'evil-window-up
