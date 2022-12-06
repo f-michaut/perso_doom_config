@@ -73,6 +73,9 @@
 (require 'multiple-cursors)
 (setq mc/always-run-for-all t)
 
+(require 'undo-fu)
+(setq undo-fu-allow-undo-in-region t)
+
 (remove-hook 'tty-setup-hook #'xterm-mouse-mode)
 (global-display-fill-column-indicator-mode)
 (set-fill-column 80)
