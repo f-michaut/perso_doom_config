@@ -4,7 +4,7 @@
 ;; Author Francois Michaut
 ;;
 ;; Started on  Sat Jan 15 01:06:41 2022 Francois Michaut
-;; Last update Sat Jan 15 01:22:40 2022 Francois Michaut
+;; Last update Thu Nov  9 20:49:55 2023 Francois Michaut
 ;;
 ;; std_comment.el : Contains functions to create file headers
 ;;
@@ -76,6 +76,7 @@
   "Updates std header with last modification time & owner.\n(According to mode)"
   (interactive)
   (save-excursion
+    (if (assoc mode-name std-modes-alist)
         (progn
           (goto-char (point-min))
           (if (search-forward header-last nil t)
@@ -93,6 +94,7 @@
             )
           )
         )
+    )
   )
 
 (defun std-file-header ()

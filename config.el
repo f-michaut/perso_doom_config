@@ -11,7 +11,6 @@
 (add-to-list 'load-path "~/.local/share/icons-in-terminal/")
 
 (add-to-list 'load-path "~/.doom.d/lisp")
-(add-to-list 'load-path "~/.doom.d/lisp/std_comment.el")
 
 (require 'fold-this)
 (global-set-key (kbd "C-t") 'fold-this)
@@ -47,6 +46,8 @@
       (global-set-key (kbd "C-x C-a") 'sidebar-buffers-open)
       )
     )
+
+(add-to-list 'exec-path (expand-file-name "~/bin"))
 
 ;; (remove-hook 'server-after-make-frame-hook 'sidebar-open)
 ;(save-selected-window (sidebar-open))
@@ -256,8 +257,9 @@ This command does not push text to `kill-ring'."
 ;; (lsp-ui-peek-enable 1)
 
 ;; (xterm-mouse-mode -1)
-(require 'elcord)
-(elcord-mode)
+;; (require 'elcord)
+;; (elcord-mode)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

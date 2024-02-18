@@ -36,4 +36,10 @@
 ;; (package! xterm-mouse :disable t)
 (package! magit-section)
 
+;(package! ox-reveal)
+;(package! revealjs)
+
+(package! lsp-sonarlint)
+(package! activity-watch-mode)
+
 (package! evil :disable t)
