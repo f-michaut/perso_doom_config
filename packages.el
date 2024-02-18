@@ -25,9 +25,15 @@
 
 ;(package! srefactor) // TODO try this (but it's not maintained anymore)
 
+(package! string-inflection)
+(package! yasnippet)
+(package! zoxide)
+
 (package! flycheck-clang-analyzer)
 (package! flycheck-clang-tidy)
 (package! xref :pin "a82f459b37b31546bf274388baf8aca79e9c30d9")
 
 ;; (package! xterm-mouse :disable t)
 (package! magit-section)
+
+(package! evil :disable t)

@@ -5,7 +5,7 @@
 (setq python-shell-interpreter "python3")
 
 ;; This line is not working ?
-(let ((default-directory (expand-file-name "lisp" doom-private-dir)))
+(let ((default-directory (expand-file-name "lisp" doom-user-dir)))
   (normal-top-level-add-subdirs-to-load-path))
 
 (add-to-list 'load-path "~/.local/share/icons-in-terminal/")
@@ -17,9 +17,25 @@
 (global-set-key (kbd "C-t") 'fold-this)
 (fold-this-persistent-mode t)
 
+(require 'projectile-rails)
+(projectile-rails-global-mode)
+(define-key projectile-rails-mode-map (kbd "C-c r") 'projectile-rails-command-map)
+(setq projectile-rails-expand-snippet-with-magic-comment t)
+
+(require 'web-mode)
+(define-key web-mode-map (kbd "C-c /") 'web-mode-element-close)
+(define-key web-mode-map (kbd "C-c C-f") 'web-mode-fold-or-unfold)
+
 (require 'eglot)
 (add-hook 'ruby-mode-hook 'eglot-ensure)
 (xclip-mode)
+
+(require 'zoxide)
+(add-hook 'find-file-hook 'zoxide-add)
+(add-hook 'projectile-after-switch-project-hook 'zoxide-add)
+
+(setq dash-docs-common-docsets '("Javascript" "HTML" "Ruby on Rails" "CSS"))
+(setq dash-docs-docsets '("Javascript" "HTML" "Ruby on Rails" "CSS"))
 
 ;; TODO fix sidebar so it doesn't destroy graphic sessions performances
 (if (not (display-graphic-p))
