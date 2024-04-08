@@ -6,14 +6,10 @@
 ;; (package! another-package :recipe (:host github :repo "username/repo"))
 ;; (package! builtin-package :disable t)
 
-(package! elcord)
-(package! all-the-icons)
-(package! multiple-cursors)
+; (package! elcord)
+; (package! all-the-icons)
 
 (package! puppet-mode)
-(package! js2-mode)
-(package! json-mode)
-(package! yaml-mode)
 
 (package! flycheck-clang-tidy)
 

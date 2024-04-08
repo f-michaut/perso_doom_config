@@ -17,6 +17,7 @@
  "C-x C-g" #'magit-commit
  "C-c C-r" #'clang-rename
  "C-c C-f" #'+fold/toggle
+ "C-c C-q" #'treemacs
  )
 
 ;; (mouse-wheel-mode -1)
@@ -88,7 +89,6 @@ This command does not push text to `kill-ring'."
 (global-set-key (kbd "C-c n") 'flycheck-next-error)
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
-
 (require 'js2-mode)
 (setq js2-strict-missing-semi-warning nil)
 (setq js2-strict-inconsistent-return-warning nil)
@@ -101,16 +101,16 @@ This command does not push text to `kill-ring'."
 ;(add-hook 'doom-restore-session-handler (lambda () (neotree-show)))
 ;(add-hook 'projectile-find-file-hook (lambda () (neotree-show)))
 ;(add-hook 'neotree-projectile-action (lambda () (neotree-show)))
-(require 'neotree)
-(setq neo-theme 'arrow)
+;; (require 'neotree)
+;; (setq neo-theme 'arrow)
 ;(setq neo-autorefresh t)
 
-(defun my_neotree_hook ()
-  "my"
-  (neotree-show)
-  (remove-hook 'doom-switch-buffer-hook 'my_neotree_hook))
-(add-hook 'doom-switch-buffer-hook 'my_neotree_hook)
-;(neotree-mode t)
+;; (defun my_neotree_hook ()
+;;   "my"
+;;   (neotree-show)
+;;   (remove-hook 'doom-switch-buffer-hook 'my_neotree_hook))
+;; (add-hook 'doom-switch-buffer-hook 'my_neotree_hook)
+;; ;(neotree-mode t)
 
 (add-to-list 'auto-mode-alist '("\\.ejs\\'" . html-mode))
 
